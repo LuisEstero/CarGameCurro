@@ -3,22 +3,28 @@ const ctx = canvas.getContext("2d");
 
 canvas.style.backgroundColor = "greenLigth";
 
-let cocheImagen = new Image();
-cocheImagen.src = "src/coche.png";
+let miniomImagen = new Image();
+miniomImagen.src = "Imagenes/Minion.png";
 
-let obstaculoImagen = new Image();
-obstaculoImagen.src = "src/obstaculo.png";
+let fuegoImagen = new Image();
+fuegoImagen.src = "Imagenes/fuego.png";
+
+let fondo = new Image();
+fondo.src= "Imagenes/fondo.png"
 
 const obstaculos = [];
 
-const coche = new Objeto(250, 0, 60, 60, cocheImagen, ctx);
+
+
+
+const miniom = new Objeto(250, 0, 60, 60, miniomImagen, ctx);
 
 const jugar = () => {
   for (let obstaculo of obstaculos) {
     obstaculo.borrar();
     obstaculo.y -= 5;
     obstaculo.dibujar();
-    if (coche.detectarColision(obstaculo)) {
+    if (miniom.detectarColision(obstaculo)) {
       console.log("Has perdido");
     }
   }
@@ -31,33 +37,33 @@ const crearObstaculos = () => {
     570,
     120,
     60,
-    obstaculoImagen,
+    fuegoImagen,
     ctx
   );
   obstaculos.push(obstaculo);
 };
 
 const cargaInicial = () => {
-  coche.dibujar();
+  miniom.dibujar();
   setInterval(jugar, 200);
   setInterval(crearObstaculos, 3000);
 };
 
 const moverCoche = (e) => {
-  coche.borrar();
+  miniom.borrar();
   if (e.key === "ArrowLeft") {
-    coche.x -= 5;
+    miniom.x -= 5;
   }
   if (e.key === "ArrowRight") {
-    coche.x += 5;
+    miniom.x += 5;
   }
   if (e.key === "ArrowUp") {
-    coche.y -= 5;
+    miniom.y -= 5;
   }
   if (e.key === "ArrowDown") {
-    coche.y += 5;
+    miniom.y += 5;
   }
-  coche.dibujar();
+  miniom.dibujar();
 };
 
 window.addEventListener("load", cargaInicial);
