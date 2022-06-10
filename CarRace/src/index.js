@@ -1,7 +1,7 @@
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.style.backgroundColor = "lightgray";
+canvas.style.backgroundColor = "greenLigth";
 
 let cocheImagen = new Image();
 cocheImagen.src = "src/coche.png";
