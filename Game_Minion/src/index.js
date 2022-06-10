@@ -4,13 +4,13 @@ const ctx = canvas.getContext("2d");
 canvas.style.backgroundColor = "greenLigth";
 
 let miniomImagen = new Image();
-miniomImagen.src = "Imagenes/Minion.png";
+miniomImagen.src = "./Imagenes/Minion.png";
 
 let fuegoImagen = new Image();
-fuegoImagen.src = "Imagenes/fuego.png";
+fuegoImagen.src = "./Imagenes/fuego.png";
 
 let fondo = new Image();
-fondo.src= "Imagenes/fondo.png"
+fondo.src= "./Imagenes/fondo.png"
 
 const obstaculos = [];
 
@@ -31,7 +31,7 @@ const jugar = () => {
 };
 
 const crearObstaculos = () => {
-  const randomPositionX = Math.floor(Math.random() * 480);
+  const randomPositionX = Math.floor(Math.random() * 580);
   const obstaculo = new Objeto(
     randomPositionX,
     570,
@@ -45,11 +45,12 @@ const crearObstaculos = () => {
 
 const cargaInicial = () => {
   miniom.dibujar();
+  ctx.drawImage(fondo,miniomImagen,fuegoImagen, 600, 600);
   setInterval(jugar, 200);
   setInterval(crearObstaculos, 3000);
 };
 
-const moverCoche = (e) => {
+const moverMinion = (e) => {
   miniom.borrar();
   if (e.key === "ArrowLeft") {
     miniom.x -= 5;
@@ -68,7 +69,7 @@ const moverCoche = (e) => {
 
 window.addEventListener("load", cargaInicial);
 
-window.addEventListener("keydown", moverCoche);
+//window.addEventListener("keydown", moverMinion);
 
 //Rotar imagen
 //Que vaya a unas coordenadas

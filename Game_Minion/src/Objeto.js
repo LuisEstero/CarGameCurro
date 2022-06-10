@@ -43,7 +43,7 @@ class Objeto {
     }
 
     if (this.y + this.alto === otroObjeto.y) {
-      //Por probar
+      
       return "colision-inferior";
     }
 
